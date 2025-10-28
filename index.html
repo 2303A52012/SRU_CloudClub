@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cloud & DevOps Club | SRU</title>
+    <style>
+        :root {
+            --light-bg: #f0f8ff;
+            --light-text: #111;
+            --dark-bg: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            --dark-text: #fff;
+            --button-bg: rgba(255, 255, 255, 0.1);
+            --button-hover: rgba(255, 255, 255, 0.3);
+            --shadow-color: rgba(0, 255, 255, 0.4);
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            transition: background 0.5s, color 0.5s;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            overflow: hidden;
+            animation: fadeIn 1.5s ease;
+        }
+
+        .container {
+            max-width: 450px;
+            width: 100%;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 4px 25px rgba(0, 0, 0, 0.25);
+            transition: 0.5s ease;
+            animation: slideUp 1.5s ease;
+        }
+
+        .logo {
+            height: 100px;
+            border-radius: 30%;
+            background: rgba(255, 255, 255, 0.15);
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--dark-text);
+            animation: float 4s ease-in-out infinite;
+        }
+
+        h1 {
+            margin: 10px 0;
+            font-size: 1.8rem;
+        }
+
+        p {
+            font-size: 0.95rem;
+            margin-bottom: 25px;
+            opacity: 0.8;
+        }
+
+        .link {
+            display: block;
+            margin: 12px auto;
+            padding: 14px;
+            width: 85%;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            box-shadow: 0 0 0 transparent;
+            transition: all 0.3s ease;
+        }
+
+        .link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 15px var(--shadow-color);
+        }
+
+        /* Light Theme */
+        body.light {
+            background: var(--light-bg);
+            color: var(--light-text);
+        }
+
+        body.light .container {
+            background: white;
+        }
+
+        body.light .link {
+            background: #e7f0ff;
+            color: #111;
+        }
+
+        body.light .link:hover {
+            background: #cde1ff;
+        }
+
+        /* Dark Theme */
+        body.dark {
+            background: var(--dark-bg);
+            color: var(--dark-text);
+        }
+
+        body.dark .container {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(10px);
+        }
+
+        body.dark .link {
+            background: var(--button-bg);
+            color: white;
+        }
+
+        body.dark .link:hover {
+            background: var(--button-hover);
+        }
+
+        /* Theme Toggle */
+        .theme-toggle {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 1.4rem;
+            cursor: pointer;
+            color: inherit;
+            transition: 0.3s;
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.1) rotate(10deg);
+        }
+
+        /* Popup Styles */
+        .popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .popup.active {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .popup-content {
+            background: white;
+            color: black;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            width: 90%;
+            max-width: 350px;
+            animation: pop 0.4s ease;
+        }
+
+        body.dark .popup-content {
+            background: #1b1b1b;
+            color: white;
+        }
+
+        .popup-content h2 {
+            margin-bottom: 10px;
+        }
+
+        .popup-content button {
+            margin-top: 15px;
+            padding: 8px 20px;
+            border: none;
+            border-radius: 8px;
+            background: #2c5364;
+            color: white;
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .popup-content button:hover {
+            background: #203a43;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(40px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        @keyframes pop {
+            from {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                width: 95%;
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <button class="theme-toggle" id="themeToggle">🌙</button>
+
+    <div class="container">
+        <div class="logo"><img src="logo.png" class="logo" alt="Cloud & DevOps Club Logo"></div>
+        <h1>Cloud & DevOps Club</h1>
+        <p>Stay connected with us at SRU ☁️</p>
+
+        <a href="https://www.instagram.com/cloud_devops_club_sru/" target="_blank" + rel="noopener noreferrer" class="link">Instagram</a>
+        <a href="https://www.linkedin.com/company/sru-cloud-computing-and-devops/posts/?feedView=all"  target="_blank" + rel="noopener noreferrer"class="link">LinkedIn</a>
+        <a href="#" class="link unavailable" id="gitLink">GitHub</a>
+        <a href="#" class="link unavailable" id="ytLink">YouTube</a>
+        <a href="mailto:cloudclub@gmail.com" target="_blank" rel="noopener noreferrer" class="link">Email</a>
+    </div>
+
+    <!-- Popup -->
+    <div class="popup" id="popup">
+        <div class="popup-content">
+            <h2>🚧 Coming Soon!</h2>
+            <p>This page is under construction. Stay tuned for updates!</p>
+            <button id="closePopup">Okay</button>
+        </div>
+    </div>
+
+    <script>
+        const toggle = document.getElementById("themeToggle");
+        const body = document.body;
+        const popup = document.getElementById("popup");
+        const closePopup = document.getElementById("closePopup");
+        const ytLink = document.getElementById("ytLink");
+
+        // Load saved theme
+        const savedTheme = localStorage.getItem("theme");
+        if (savedTheme) {
+            body.classList.add(savedTheme);
+            toggle.textContent = savedTheme === "dark" ? "☀️" : "🌙";
+        } else {
+            body.classList.add("dark");
+        }
+
+        // Toggle theme
+        toggle.addEventListener("click", () => {
+            if (body.classList.contains("dark")) {
+                body.classList.replace("dark", "light");
+                toggle.textContent = "🌙";
+                localStorage.setItem("theme", "light");
+            } else {
+                body.classList.replace("light", "dark");
+                toggle.textContent = "☀️";
+                localStorage.setItem("theme", "dark");
+            }
+        });
+
+        // Popup logic
+        ytLink.addEventListener("click", (e) => {
+            e.preventDefault();
+            popup.classList.add("active");
+        });
+
+        closePopup.addEventListener("click", () => {
+            popup.classList.remove("active");
+        });
+    </script>
+</body>
+
+</html>
